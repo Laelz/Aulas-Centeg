@@ -49,21 +49,6 @@ Para compilar: `npm run build`. Para conferir a compilação localmente: `npm ru
 
 Instalação oficial do Vuetify: https://vuetifyjs.com/quick-start
 
-## Material de aula — novembro de 2026
-
-A aplicação agora apresenta 32 telas didáticas: quatro por encontro, nos dias
-03, 05, 10, 12, 17, 19, 24 e 26/11. Use o menu de datas e os botões
-Anterior/Próxima. As setas do teclado também navegam fora dos controles.
-Cada tela possui endereço próprio, por exemplo `/#aula-3-tela-2`.
-
-- `src/data/lessons.js`: conteúdo dos oito encontros e exemplos propostos.
-- `src/views/CourseView.vue`: composição da área de aulas.
-- `src/views/WelcomeView.vue`: tela original preservada, acessível por `/#original`.
-
-O painel de objetivos descrito nas aulas é um exercício a desenvolver pelos
-alunos; seus exemplos não são executados pelo material. O portal não adiciona
-API, autenticação ou persistência. As dependências e o ambiente Docker foram mantidos.
-
 ## Organização do código
 
 ```text
