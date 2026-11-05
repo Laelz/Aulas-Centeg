@@ -5,4 +5,6 @@
   text-rendering: optimizeLegibility;
 }
 
-.v-application { font-family: inherit; }
+.v-application {
+  font-family: inherit;
+}

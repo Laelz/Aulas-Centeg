@@ -29,17 +29,25 @@ const totalScreens = lessons.reduce((total, item) => total + item.screens.length
         <CourseSidebar :lessons="lessons" :lesson-index="lessonIndex" @select="go" />
         <main id="conteudo" class="lesson-content">
           <div class="lesson-meta">
-            <span>ENCONTRO {{ String(lessonIndex + 1).padStart(2, '0') }} / {{ String(lessons.length).padStart(2, '0') }}</span>
+            <span
+              >ENCONTRO {{ String(lessonIndex + 1).padStart(2, '0') }} /
+              {{ String(lessons.length).padStart(2, '0') }}</span
+            >
             <span>{{ lesson.weekday }} · {{ lesson.date }}/2026 · 120 min</span>
           </div>
           <h1 class="lesson-title">{{ lesson.title }}</h1>
           <p class="lesson-summary">{{ lesson.summary }}</p>
-          <LessonTabs :screens="lesson.screens" :screen-index="screenIndex" @select="go(lessonIndex, $event)" />
+          <LessonTabs
+            :screens="lesson.screens"
+            :screen-index="screenIndex"
+            @select="go(lessonIndex, $event)"
+          />
           <LessonScreen
             :key="lessonIndex + '-' + screenIndex"
             ref="heading"
             :screen="screen"
             :screen-index="screenIndex"
+            :screen-count="lesson.screens.length"
             :files="lesson.files"
           />
           <LessonNavigation
@@ -48,7 +56,10 @@ const totalScreens = lessons.reduce((total, item) => total + item.screens.length
             :last-screen="screenIndex === lesson.screens.length - 1"
             @move="move"
           />
-          <p class="navigation-hint">Use ← e → fora dos controles para navegar · Exemplos de atividades são propostas, não funcionalidades prontas.</p>
+          <p class="navigation-hint">
+            Use ← e → fora dos controles para navegar · Exemplos de atividades são propostas, não
+            funcionalidades prontas.
+          </p>
         </main>
       </div>
     </v-main>

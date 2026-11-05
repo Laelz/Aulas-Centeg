@@ -1,17 +1,60 @@
-.welcome-container { max-width: 1160px; }
-.hero { min-height: calc(100svh - 160px); padding-block: 64px; }
-.eyebrow { color: #176b58; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; }
-.hero-title { font-size: clamp(3.5rem, 7vw, 6rem); line-height: 1.05; font-weight: 750; letter-spacing: -0.06em; }
-.hero-title span { color: #176b58; }
-.intro { max-width: 470px; font-size: 1.15rem; line-height: 1.8; color: #5b6e66; }
-.greeting { min-height: 48px; font-size: 0.875rem; color: #5b6e66; }
-.lesson-card { background: #fffefa; border-color: #dfe5db !important; }
-.lesson-number { color: #77857d; font-size: 0.75rem; }
-.code-symbol { color: #176b58; font: 700 3.5rem/1.2 monospace; }
-.page-footer { padding-block: 20px; border-top: 1px solid #dfe5db; color: #6a7b72; font-size: 0.8rem; }
-
-@media (max-width: 600px) {
-  .hero { padding-block: 40px; }
-  .v-toolbar .v-chip { display: none; }
+.welcome-container {
+  max-width: 1160px;
+}
+.hero {
+  min-height: calc(100svh - 160px);
+  padding-block: 64px;
+}
+.eyebrow {
+  color: #176b58;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+.hero-title {
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  line-height: 1.05;
+  font-weight: 750;
+  letter-spacing: -0.06em;
+}
+.hero-title span {
+  color: #176b58;
+}
+.intro {
+  max-width: 470px;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #5b6e66;
+}
+.greeting {
+  min-height: 48px;
+  font-size: 0.875rem;
+  color: #5b6e66;
+}
+.lesson-card {
+  background: #fffefa;
+  border-color: #dfe5db !important;
+}
+.lesson-number {
+  color: #77857d;
+  font-size: 0.75rem;
+}
+.code-symbol {
+  color: #176b58;
+  font: 700 3.5rem/1.2 monospace;
+}
+.page-footer {
+  padding-block: 20px;
+  border-top: 1px solid #dfe5db;
+  color: #6a7b72;
+  font-size: 0.8rem;
 }
 
+@media (max-width: 600px) {
+  .hero {
+    padding-block: 40px;
+  }
+  .v-toolbar .v-chip {
+    display: none;
+  }
+}

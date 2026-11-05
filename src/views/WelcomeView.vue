@@ -31,8 +31,10 @@ const greetings = ref(0)
             <p class="greeting mt-4" role="status" aria-live="polite">
               {{ greetings ? `Olá! Que bom ter você aqui. Saudações enviadas: ${greetings}.` : 'Seu próximo aprendizado começa aqui.' }}
             </p>
+             <p class="greeting mt-4" role="status" aria-live="polite">
+              Lael Albuquerque de Araújo Filho
+            </p>
           </v-col>
-
           <v-col cols="12" md="5" class="mt-10 mt-md-0">
             <v-card class="lesson-card pa-8 pa-sm-10" rounded="xl" elevation="0" border>
               <div class="d-flex align-center justify-space-between mb-12">

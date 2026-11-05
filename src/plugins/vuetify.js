@@ -1,13 +1,33 @@
 import { createVuetify } from 'vuetify'
 import {
-  VApp, VAppBar, VAvatar, VBtn, VCard, VChip, VCol,
-  VContainer, VDivider, VMain, VRow, VSpacer,
+  VApp,
+  VAppBar,
+  VAvatar,
+  VBtn,
+  VCard,
+  VChip,
+  VCol,
+  VContainer,
+  VDivider,
+  VMain,
+  VRow,
+  VSpacer,
 } from 'vuetify/components'
 
 export const vuetify = createVuetify({
   components: {
-    VApp, VAppBar, VAvatar, VBtn, VCard, VChip, VCol,
-    VContainer, VDivider, VMain, VRow, VSpacer,
+    VApp,
+    VAppBar,
+    VAvatar,
+    VBtn,
+    VCard,
+    VChip,
+    VCol,
+    VContainer,
+    VDivider,
+    VMain,
+    VRow,
+    VSpacer,
   },
   theme: {
     defaultTheme: 'alunos',
@@ -24,4 +44,3 @@ export const vuetify = createVuetify({
     },
   },
 })
-
