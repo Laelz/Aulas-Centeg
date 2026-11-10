@@ -5,6 +5,7 @@ export function useCourseNavigation() {
   const lessonIndex = ref(0)
   const screenIndex = ref(0)
   const demo = ref(false)
+  const laboratory = ref(false)
   const heading = ref(null)
   const lesson = computed(() => lessons[lessonIndex.value])
   const screen = computed(() => lesson.value.screens[screenIndex.value])
@@ -17,6 +18,7 @@ export function useCourseNavigation() {
 
   function readLocation() {
     demo.value = window.location.hash === '#original'
+    laboratory.value = window.location.hash === '#eventos'
     const match = window.location.hash.match(/^#aula-(\d+)-tela-(\d+)$/)
     if (match) {
       lessonIndex.value = Math.max(0, Math.min(lessons.length - 1, Number(match[1]) - 1))
@@ -30,6 +32,7 @@ export function useCourseNavigation() {
     lessonIndex.value = day
     screenIndex.value = page
     demo.value = false
+    laboratory.value = false
     window.location.hash = `#aula-${day + 1}-tela-${page + 1}`
     await nextTick()
     heading.value?.focusHeading()
@@ -41,7 +44,15 @@ export function useCourseNavigation() {
     if (target) go(target.day, target.page)
   }
   function keyboard(event) {
-    if (demo.value || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return
+    if (
+      demo.value ||
+      laboratory.value ||
+      event.altKey ||
+      event.ctrlKey ||
+      event.metaKey ||
+      event.shiftKey
+    )
+      return
     if (
       ['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON', 'A'].includes(event.target.tagName) ||
       event.target.isContentEditable
@@ -66,5 +77,17 @@ export function useCourseNavigation() {
     window.removeEventListener('keydown', keyboard)
   })
 
-  return { lessons, lessonIndex, screenIndex, demo, heading, lesson, screen, position, go, move }
+  return {
+    lessons,
+    lessonIndex,
+    screenIndex,
+    demo,
+    laboratory,
+    heading,
+    lesson,
+    screen,
+    position,
+    go,
+    move,
+  }
 }

@@ -5,5 +5,6 @@ import { vuetify } from './plugins/vuetify'
 import './styles/base.css'
 import './styles/welcome.css'
 import './styles/course.css'
+import './styles/events.css'
 
 createApp(App).use(vuetify).mount('#app')

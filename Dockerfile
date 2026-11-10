@@ -8,9 +8,6 @@ FROM base AS development
 EXPOSE 5173
 CMD ["npm", "run", "dev"]
 
-FROM development AS devcontainer
-RUN apk add --no-cache bash git openssh-client
-
 FROM base AS build
 RUN npm run build
 

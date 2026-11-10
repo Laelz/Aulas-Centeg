@@ -5,37 +5,6 @@ As versões estáveis foram instaladas com `@latest` e registradas no `package-l
 
 ## Executar com Docker
 
-### Abrir no VS Code com Dev Container
-
-Requisitos: Docker Desktop funcionando com contêineres Linux, VS Code e a extensão
-[Dev Containers da Microsoft](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
-O Dev Container depende da virtualização usada pelo Docker; ele não resolve a
-indisponibilidade de WSL/virtualização nas máquinas dos alunos.
-
-1. Abra a pasta do projeto no VS Code.
-2. Pressione **Ctrl + Shift + P** e escolha **Dev Containers: Reopen in Container**.
-3. Aguarde a construção e a execução de `npm ci`. A extensão **Vue (Official)**
-   será instalada no ambiente do contêiner.
-4. Abra um terminal no VS Code e execute `npm run dev`.
-5. Acesse http://localhost:5173. A demonstração está em http://localhost:5173/#original.
-
-O ambiente inclui Node 24, npm, Bash, Git e cliente SSH. As dependências ficam no
-volume `node_modules` já definido no Compose; o código continua na pasta local,
-montada em `/app`. Não é preciso instalar Node no Windows.
-
-O arquivo `.devcontainer/compose.yaml` reutiliza o serviço `app`, mas mantém o
-contêiner aberto sem iniciar o Vite automaticamente. Inicie-o uma única vez pelo
-terminal; use **Ctrl + C** para pará-lo. Fechar a janela remota do VS Code encerra
-os serviços desse projeto. Para atualizar a configuração, execute **Dev Containers:
-Rebuild Container**. Depois de alterar dependências, execute `npm ci` no terminal
-com o servidor parado.
-
-Para voltar ao modo Docker comum, saia do Dev Container e execute
-`docker compose up --build -d app`. Não execute os dois modos simultaneamente:
-eles usam o mesmo serviço e a mesma porta.
-
-### Executar diretamente pelo terminal
-
 Requisito: Docker Desktop em execução, usando contêineres Linux.
 
 ```sh
@@ -182,12 +151,10 @@ oito em 05/11, oito em 10/11 e quatro em cada um dos outros seis encontros.
 
 O projeto inclui Prettier como dependência de desenvolvimento, com configuração
 em `.prettierrc.json`: dois espaços, aspas simples no JavaScript e sem ponto e vírgula.
-A extensão `esbenp.prettier-vscode` é instalada pelo Dev Container e recomendada
-para quem abre a pasta localmente. A formatação ao salvar está habilitada no VS Code.
-
-Se o Dev Container já estava aberto, execute **Dev Containers: Rebuild Container**
-para aplicar a nova extensão. Fora do contêiner, instale a extensão recomendada e
-execute `npm ci` para sincronizar as dependências.
+Instale a extensão **Prettier - Code formatter** (esbenp.prettier-vscode),
+recomendada ao abrir a pasta no VS Code. A formatação ao salvar está habilitada
+em .vscode/settings.json. Use a instalação de dependências descrita acima
+para preparar o Prettier local do projeto.
 
 No terminal do ambiente:
 
@@ -199,3 +166,17 @@ npm run format:check
 `format` organiza os arquivos; `format:check` verifica sem alterar. As pastas
 `node_modules`, `dist` e o lockfile ficam fora da formatação. Os trechos de código
 armazenados no conteúdo das aulas são preservados como exemplos didáticos.
+
+## Laboratório interativo de eventos
+
+No Welcome, clique em **Explorar laboratório de eventos** ou abra
+http://localhost:5173/#eventos. A tela usa um grid responsivo com oito exemplos:
+cliques com argumentos, `input`, atalhos de teclado, `submit.prevent`, ponteiro e
+foco, `change` com ordenação e totais, eventos personalizados em dialog e busca
+assíncrona local com falha e cancelamento.
+
+Cada card tem controles funcionais, uma pergunta para investigação e o código
+real do componente em **Ver código comentado**. Os fontes estão em
+`src/components/events/`; a tela fica em `src/views/EventsLabView.vue` e os estilos
+em `src/styles/events.css`. Os exemplos são independentes e reiniciam ao sair da
+tela. Nenhum pagamento ou busca utiliza API ou persistência.

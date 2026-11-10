@@ -53,6 +53,11 @@ function pagar() {
               {{ pagar() }}
             </p>
             <v-btn color="blue" variant="tonal"> Carrinho </v-btn>
+            <div class="mt-5">
+              <v-btn href="#eventos" color="primary" variant="outlined" rounded="lg">
+                Explorar laboratório de eventos →
+              </v-btn>
+            </div>
           </v-col>
           <v-col cols="12" md="5" class="mt-10 mt-md-0">
             <v-card class="lesson-card pa-8 pa-sm-10" rounded="xl" elevation="0" border>

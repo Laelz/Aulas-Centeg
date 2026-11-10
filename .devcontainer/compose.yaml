@@ -1,8 +1,0 @@
-services:
-  app:
-    image: centeg-devcontainer
-    build:
-      target: devcontainer
-    init: true
-    # Mantém o ambiente aberto; execute npm run dev no terminal do VS Code.
-    command: ['sleep', 'infinity']
