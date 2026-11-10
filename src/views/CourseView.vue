@@ -7,16 +7,18 @@ import LessonNavigation from '../components/course/LessonNavigation.vue'
 import { useCourseNavigation } from '../composables/useCourseNavigation'
 import WelcomeView from './WelcomeView.vue'
 import EventsLabView from './EventsLabView.vue'
+import StudentView from './StudentView.vue'
 
 const {
-  lessons, lessonIndex, screenIndex, demo, laboratory, heading,
+  lessons, lessonIndex, screenIndex, demo, laboratory, student, heading,
   lesson, screen, position, go, move,
 } = useCourseNavigation()
 const totalScreens = lessons.reduce((total, item) => total + item.screens.length, 0)
 </script>
 
 <template>
-  <EventsLabView v-if="laboratory" />
+  <StudentView v-if="student" />
+  <EventsLabView v-else-if="laboratory" />
   <template v-else-if="demo">
     <div class="demo-return">
       <v-btn color="primary" @click="go(lessonIndex, screenIndex)">← Voltar às aulas</v-btn>

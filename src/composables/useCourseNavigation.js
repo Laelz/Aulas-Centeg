@@ -6,6 +6,7 @@ export function useCourseNavigation() {
   const screenIndex = ref(0)
   const demo = ref(false)
   const laboratory = ref(false)
+  const student = ref(false)
   const heading = ref(null)
   const lesson = computed(() => lessons[lessonIndex.value])
   const screen = computed(() => lesson.value.screens[screenIndex.value])
@@ -19,6 +20,7 @@ export function useCourseNavigation() {
   function readLocation() {
     demo.value = window.location.hash === '#original'
     laboratory.value = window.location.hash === '#eventos'
+    student.value = window.location.hash === '#area-livre'
     const match = window.location.hash.match(/^#aula-(\d+)-tela-(\d+)$/)
     if (match) {
       lessonIndex.value = Math.max(0, Math.min(lessons.length - 1, Number(match[1]) - 1))
@@ -33,6 +35,7 @@ export function useCourseNavigation() {
     screenIndex.value = page
     demo.value = false
     laboratory.value = false
+    student.value = false
     window.location.hash = `#aula-${day + 1}-tela-${page + 1}`
     await nextTick()
     heading.value?.focusHeading()
@@ -47,6 +50,7 @@ export function useCourseNavigation() {
     if (
       demo.value ||
       laboratory.value ||
+      student.value ||
       event.altKey ||
       event.ctrlKey ||
       event.metaKey ||
@@ -83,6 +87,7 @@ export function useCourseNavigation() {
     screenIndex,
     demo,
     laboratory,
+    student,
     heading,
     lesson,
     screen,

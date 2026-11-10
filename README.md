@@ -180,3 +180,15 @@ real do componente em **Ver código comentado**. Os fontes estão em
 `src/components/events/`; a tela fica em `src/views/EventsLabView.vue` e os estilos
 em `src/styles/events.css`. Os exemplos são independentes e reiniciam ao sair da
 tela. Nenhum pagamento ou busca utiliza API ou persistência.
+
+## Área livre do aluno
+
+No Welcome, clique em **Abrir área livre** ou acesse
+http://localhost:5173/#area-livre. A tela tem apenas cabeçalho com retorno ao
+Welcome e conteúdo em branco, com a estrutura de Vuetify pronta.
+
+Edite `src/views/StudentView.vue`: declare dados e funções em `<script setup>`,
+construa a interface dentro de `v-col` no `<template>` e escreva os estilos no
+bloco `<style scoped>`. Os comentários indicam onde começar. A navegação e o
+registro da tela já estão conectados; não é necessário alterar `App.vue`.
+O código é editado no VS Code, não em um editor dentro do navegador.

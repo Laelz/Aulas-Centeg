@@ -53,9 +53,12 @@ function pagar() {
               {{ pagar() }}
             </p>
             <v-btn color="blue" variant="tonal"> Carrinho </v-btn>
-            <div class="mt-5">
+            <div class="mt-5 d-flex ga-3 flex-wrap">
               <v-btn href="#eventos" color="primary" variant="outlined" rounded="lg">
                 Explorar laboratório de eventos →
+              </v-btn>
+              <v-btn href="#area-livre" color="primary" rounded="lg" elevation="0">
+                Abrir área livre →
               </v-btn>
             </div>
           </v-col>
