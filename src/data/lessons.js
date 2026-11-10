@@ -1,3 +1,4 @@
+import { lesson03 } from './lesson03.js'
 import { lesson02 } from './lesson02.js'
 
 // Conteúdo didático. Os exemplos são propostas de evolução, salvo indicação contrária.
@@ -207,99 +208,7 @@ export const lessons = [
     ],
   },
   lesson02,
-  {
-    date: '10/11',
-    weekday: 'Terça-feira',
-    title: 'Reatividade e eventos',
-    summary: 'Transforme cliques em mudanças previsíveis de estado.',
-    files: ['src/views/WelcomeView.vue', 'src/main.js', 'src/plugins/vuetify.js'],
-    screens: [
-      screen(
-        'Estado',
-        'A interface é consequência dos dados',
-        'A tela original já possui greetings = ref(0). Cada clique muda esse estado e o Vue atualiza as partes do template que dependem dele.',
-        [
-          [
-            'ref',
-            'ref cria uma referência reativa. No JavaScript, leia e escreva pelo .value. No template, a referência de nível superior é desempacotada.',
-          ],
-          [
-            'Interpolação',
-            '{{ greetings }} mostra um valor, não executa HTML. Uma expressão pode escolher mensagens diferentes para zero, um ou vários cliques.',
-          ],
-          [
-            'Previsão',
-            'Antes de clicar, diga o valor atual, a ação que acontecerá e qual texto será renderizado. Isso ajuda a entender a relação de causa e efeito.',
-          ],
-        ],
-        'const greetings = ref(0)\n\nfunction saudar() {\n  greetings.value += 1\n}\n\n// No template: {{ greetings }}',
-        'O que acontece se você declarar um número comum em vez de um ref e esperar atualização reativa?',
-      ),
-      screen(
-        'Eventos',
-        'Uma ação, uma função com intenção clara',
-        'Extrair a lógica do @click facilita nomear o comportamento, testar mentalmente os casos e reutilizar a ação.',
-        [
-          [
-            'Evento',
-            '@click="saudar" conecta o clique à função. Não é preciso buscar o botão no DOM nem trocar seu texto manualmente.',
-          ],
-          [
-            'Vinculação',
-            ':disabled recebe uma expressão JavaScript. disabled="condição" é um atributo literal e não avalia essa condição.',
-          ],
-          [
-            'Reinício',
-            'Uma função de reinício escreve zero no mesmo estado. A mensagem e o estado do botão devem acompanhar essa mudança.',
-          ],
-        ],
-        'function reiniciar() {\n  greetings.value = 0\n}\n\n// Template proposto:\n<v-btn @click="saudar">Dizer olá</v-btn>\n<v-btn :disabled="greetings === 0" @click="reiniciar">\n  Reiniciar\n</v-btn>',
-        'Quais partes da interface precisam mudar quando o contador volta a zero?',
-      ),
-      screen(
-        'Prática guiada',
-        'Evolua o contador original',
-        'Trabalhe em WelcomeView.vue. Preserve o anúncio acessível já existente e use apenas um estado para contar saudações.',
-        [
-          [
-            '1 · Nomeie a ação',
-            'Troque greetings++ inline por saudar(). Dentro do script, use greetings.value. Confirme que o resultado não mudou.',
-          ],
-          [
-            '2 · Acrescente reinício',
-            'Crie reiniciar() e um segundo v-btn. Desabilite-o quando greetings for zero.',
-          ],
-          [
-            '3 · Teste fronteiras',
-            'Observe zero, um e dois cliques. Reinicie e repita. Confira que texto, contador e botão ficam coerentes.',
-          ],
-        ],
-        '// Preserve na mensagem de resultado:\n<p role="status" aria-live="polite">\n  {{ greetings ? `Saudações: ${greetings}` : "Vamos começar?" }}\n</p>',
-        'Como demonstrar que o botão e a mensagem dependem da mesma fonte de verdade?',
-      ),
-      screen(
-        'Desafio',
-        'Mensagens que acompanham a quantidade',
-        'Implemente uma mensagem para zero, outra para a primeira saudação e outra para as demais. Não armazene o mesmo dado duas vezes.',
-        [
-          [
-            'Faça sozinho',
-            'Mostre “Nenhuma saudação”, “Primeira saudação” ou “Já saudamos várias vezes”, conforme o valor. Mantenha o reinício funcional.',
-          ],
-          [
-            'Critérios',
-            'Os três casos funcionam e reiniciar restaura o primeiro. O aluno consegue explicar .value e vinculação dinâmica.',
-          ],
-          [
-            'Diagnóstico',
-            'Sem atualização: confira ref. Botão sempre bloqueado: confira :disabled. Texto alterado por querySelector: substitua por estado e template.',
-          ],
-        ],
-        '// Roteiro de verificação\n// início → zero\n// primeiro clique → um\n// segundo clique → vários\n// reiniciar → zero novamente',
-        'Qual teste você acrescentaria para evitar que o contador e a mensagem se contradigam?',
-      ),
-    ],
-  },
+  lesson03,
   {
     date: '12/11',
     weekday: 'Quinta-feira',

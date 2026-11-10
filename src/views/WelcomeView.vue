@@ -2,6 +2,24 @@
 import { ref } from 'vue'
 
 const greetings = ref(0)
+const perfil = ref('Gustavo')
+const telefone = ref('81 9999-9999')
+const condicao = ref(false)
+
+const saldo = ref(1000);
+const debito = ref(0);
+
+function aula(num1, num2) {
+  const soma = greetings.value + num2 + num1;
+
+  return "A soma é :  " + soma
+}
+
+function pagar() {
+  let valor =  saldo.value - debito.value;
+
+  return valor;
+}
 </script>
 
 <template>
@@ -22,18 +40,19 @@ const greetings = ref(0)
             <p class="eyebrow mb-5">UM NOVO COMEÇO</p>
             <h1 class="hero-title mb-6">Olá, <span>Alunos!</span></h1>
             <p class="intro mb-8">
-              Grandes ideias começam com um primeiro passo.
-              Vamos aprender, experimentar e construir juntos?
+              Grandes ideias começam com um primeiro passo. Vamos aprender, experimentar e construir
+              juntos?
             </p>
-            <v-btn color="primary" size="x-large" rounded="lg" elevation="0" @click="greetings++">
+            <v-btn color="primary" size="x-large" rounded="lg" elevation="0" @click="debito++">
               {{ greetings ? 'Dizer olá de novo' : 'Dizer olá' }}
             </v-btn>
             <p class="greeting mt-4" role="status" aria-live="polite">
               {{ greetings ? `Olá! Que bom ter você aqui. Saudações enviadas: ${greetings}.` : 'Seu próximo aprendizado começa aqui.' }}
             </p>
-             <p class="greeting mt-4" role="status" aria-live="polite">
-              Lael Albuquerque de Araújo Filho
+            <p class="greeting mt-4" role="status" aria-live="polite">
+              {{ pagar() }}
             </p>
+            <v-btn color="blue" variant="tonal"> Carrinho </v-btn>
           </v-col>
           <v-col cols="12" md="5" class="mt-10 mt-md-0">
             <v-card class="lesson-card pa-8 pa-sm-10" rounded="xl" elevation="0" border>
@@ -43,7 +62,9 @@ const greetings = ref(0)
               </div>
               <div class="code-symbol mb-6" aria-hidden="true">&lt; / &gt;</div>
               <h2 class="text-h5 font-weight-bold mb-3">Todo mundo começa com um olá.</h2>
-              <p class="text-medium-emphasis mb-8">Um espaço para transformar curiosidade em conhecimento.</p>
+              <p class="text-medium-emphasis mb-8">
+                Um espaço para transformar curiosidade em conhecimento.
+              </p>
               <v-divider class="mb-5" />
               <div class="d-flex ga-2 flex-wrap">
                 <v-chip size="small" variant="outlined">Vue</v-chip>

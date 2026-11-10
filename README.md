@@ -134,7 +134,9 @@ src/
 ├── composables/
 │   └── useCourseNavigation.js # Estado, links e atalhos de teclado
 ├── data/
-│   └── lessons.js
+│   ├── lessons.js
+│   ├── lesson02.js
+│   └── lesson03.js
 ├── plugins/
 │   └── vuetify.js
 ├── styles/
@@ -159,6 +161,22 @@ previsões de resultado, atividades no caderno e correções para discussão col
 Os exemplos adicionais não são executados: o professor pode demonstrá-los em sua
 cópia do projeto. Os alunos não precisam de Docker para acompanhar a atividade.
 Acesso direto: http://localhost:5173/#aula-2-tela-1.
+
+## Aula de 10/11 — reatividade e eventos
+
+O conteúdo está em `src/data/lesson03.js`, importado pelo índice `lessons.js`.
+São oito etapas de 15 minutos e 24 blocos comentados: estado e `ref`, `const`
+e `.value`, funções e parâmetros, eventos, retorno versus alteração de estado,
+vinculação de atributos, prática guiada e desafio com correção.
+
+Os exemplos usam também `saldo`, `debito`, `aula()` e `pagar()` encontrados no
+Welcome da turma, sem alterar esse arquivo. As propostas podem ser discutidas
+pela projeção e resolvidas no caderno. Código mostrado no curso é texto didático,
+não executado automaticamente. Use os trechos principais na explicação e os
+complementares como apoio conforme o ritmo da turma.
+
+Acesso: http://localhost:5173/#aula-3-tela-1. O curso agora possui 40 telas:
+oito em 05/11, oito em 10/11 e quatro em cada um dos outros seis encontros.
 
 ## Formatação com Prettier
 
