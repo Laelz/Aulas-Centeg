@@ -7,6 +7,7 @@ export function useCourseNavigation() {
   const demo = ref(false)
   const laboratory = ref(false)
   const student = ref(false)
+  const formWorkshop = ref(false)
   const heading = ref(null)
   const lesson = computed(() => lessons[lessonIndex.value])
   const screen = computed(() => lesson.value.screens[screenIndex.value])
@@ -21,6 +22,7 @@ export function useCourseNavigation() {
     demo.value = window.location.hash === '#original'
     laboratory.value = window.location.hash === '#eventos'
     student.value = window.location.hash === '#area-livre'
+    formWorkshop.value = /^#formulario(?:-passo-[1-8])?$/.test(window.location.hash)
     const match = window.location.hash.match(/^#aula-(\d+)-tela-(\d+)$/)
     if (match) {
       lessonIndex.value = Math.max(0, Math.min(lessons.length - 1, Number(match[1]) - 1))
@@ -36,6 +38,7 @@ export function useCourseNavigation() {
     demo.value = false
     laboratory.value = false
     student.value = false
+    formWorkshop.value = false
     window.location.hash = `#aula-${day + 1}-tela-${page + 1}`
     await nextTick()
     heading.value?.focusHeading()
@@ -51,6 +54,7 @@ export function useCourseNavigation() {
       demo.value ||
       laboratory.value ||
       student.value ||
+      formWorkshop.value ||
       event.altKey ||
       event.ctrlKey ||
       event.metaKey ||
@@ -88,6 +92,7 @@ export function useCourseNavigation() {
     demo,
     laboratory,
     student,
+    formWorkshop,
     heading,
     lesson,
     screen,

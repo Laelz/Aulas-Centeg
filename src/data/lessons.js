@@ -1,3 +1,4 @@
+import { lesson04 } from './lesson04.js'
 import { lesson03 } from './lesson03.js'
 import { lesson02 } from './lesson02.js'
 
@@ -209,103 +210,7 @@ export const lessons = [
   },
   lesson02,
   lesson03,
-  {
-    date: '12/11',
-    weekday: 'Quinta-feira',
-    title: 'Formulários e listas',
-    summary: 'Comece o painel de objetivos com cadastro validado.',
-    files: [
-      'src/views/WelcomeView.vue → atividade em cópia',
-      'src/main.js',
-      'src/plugins/vuetify.js',
-    ],
-    screens: [
-      screen(
-        'Modelo de dados',
-        'Antes da lista, defina um objetivo',
-        'A partir deste encontro, o exercício é um painel de objetivos de estudo. Essa funcionalidade é proposta; não faz parte do exemplo original.',
-        [
-          [
-            'Objeto',
-            'Cada objetivo tem id estável, titulo e concluido. O identificador acompanha o item mesmo se sua posição mudar.',
-          ],
-          [
-            'Coleção reativa',
-            'Um ref com array guarda a lista. O cadastro acrescenta um objeto; o template renderiza a coleção com v-for.',
-          ],
-          [
-            'Estado vazio',
-            'v-if mostra uma orientação quando a lista está vazia. A lista deve ser acessível depois do primeiro cadastro.',
-          ],
-        ],
-        'const titulo = ref("")\nconst objetivos = ref([])\n\n// Forma de cada novo objetivo:\n{ id: crypto.randomUUID(), titulo: "Aprender Vue", concluido: false }',
-        'Por que o título não é uma boa chave se dois alunos podem cadastrar o mesmo texto?',
-      ),
-      screen(
-        'Formulário',
-        'Digitar não é o mesmo que cadastrar',
-        'v-model mantém o campo sincronizado com o estado. A submissão decide se o conteúdo é válido e pode entrar na lista.',
-        [
-          [
-            'Componentes novos',
-            'Importe e registre VForm e VTextField em plugins/vuetify.js. Eles ainda não estão no registro original.',
-          ],
-          [
-            'Regras',
-            'Normalize com trim() e aceite entre 3 e 80 caracteres. Uma regra retorna true ou uma mensagem explicando o problema.',
-          ],
-          [
-            'Envio',
-            'Use @submit.prevent e um botão type="submit". Aguarde form.value.validate() e verifique valid antes de cadastrar.',
-          ],
-        ],
-        'const form = ref(null)\nconst regras = [v => {\n  const n = (v ?? "").trim().length\n  return (n >= 3 && n <= 80) || "Use de 3 a 80 caracteres"\n}]\n\n// Em uma função async de envio:\nconst { valid } = await form.value.validate()\nif (!valid) return',
-        'Por que um texto só de espaços não deve passar na validação?',
-      ),
-      screen(
-        'Prática guiada',
-        'Do campo ao primeiro cartão',
-        'Primeiro implemente o fluxo completo com apenas um campo. Só depois refine a apresentação.',
-        [
-          [
-            '1 · Formulário',
-            'Crie titulo, form e objetivos. Ligue v-model ao campo e rules às regras. Conecte o envio a uma função async.',
-          ],
-          [
-            '2 · Cadastro',
-            'Após validar, adicione um objeto com título normalizado e id novo. Limpe o campo e a validação após o sucesso.',
-          ],
-          [
-            '3 · Lista',
-            'Renderize os cartões com v-for e :key="objetivo.id". Use uma mensagem alternativa quando não existir nenhum item.',
-          ],
-        ],
-        '<v-form ref="form" @submit.prevent="adicionar">\n  <v-text-field v-model="titulo" label="Objetivo" :rules="regras" />\n  <v-btn type="submit">Adicionar</v-btn>\n</v-form>\n<v-card v-for="objetivo in objetivos" :key="objetivo.id">\n  {{ objetivo.titulo }}\n</v-card>',
-        'O que deve permanecer inalterado quando a tentativa de cadastro for inválida?',
-      ),
-      screen(
-        'Desafio',
-        'Teste as entradas que costumam escapar',
-        'Faça o cadastro resistir aos casos de borda. A validação deve funcionar pelo botão e pela tecla Enter.',
-        [
-          [
-            'Faça sozinho',
-            'Acrescente uma mensagem com a quantidade cadastrada. Teste vazio, espaços, dois caracteres, três caracteres e mais de oitenta.',
-          ],
-          [
-            'Critérios',
-            'Somente valores válidos entram na lista. Cada item tem id próprio. O estado vazio some após o primeiro cadastro.',
-          ],
-          [
-            'Diagnóstico',
-            'Página recarrega: confira submit.prevent. Promise tratada como booleano: use await e valid. Lista confusa: confira as chaves.',
-          ],
-        ],
-        '// Após validação bem-sucedida:\nobjetivos.value.push({\n  id: crypto.randomUUID(),\n  titulo: titulo.value.trim(),\n  concluido: false,\n})',
-        'Como provar que pressionar Enter segue as mesmas regras que clicar em Adicionar?',
-      ),
-    ],
-  },
+  lesson04,
   {
     date: '17/11',
     weekday: 'Terça-feira',

@@ -105,7 +105,8 @@ src/
 ├── data/
 │   ├── lessons.js
 │   ├── lesson02.js
-│   └── lesson03.js
+│   ├── lesson03.js
+│   └── lesson04.js
 ├── plugins/
 │   └── vuetify.js
 ├── styles/
@@ -144,8 +145,29 @@ pela projeção e resolvidas no caderno. Código mostrado no curso é texto did�
 não executado automaticamente. Use os trechos principais na explicação e os
 complementares como apoio conforme o ritmo da turma.
 
-Acesso: http://localhost:5173/#aula-3-tela-1. O curso agora possui 40 telas:
-oito em 05/11, oito em 10/11 e quatro em cada um dos outros seis encontros.
+Acesso: http://localhost:5173/#aula-3-tela-1. O curso possui 44 telas:
+oito em 05/11, 10/11 e 12/11, e quatro em cada um dos outros cinco encontros.
+
+## Aula de 12/11 — formulários e listas
+
+O conteúdo está em `src/data/lesson04.js`, com oito etapas de 15 minutos e
+24 blocos comentados, organizados para construir junto com a turma:
+preparar o cartão, criar um campo com `v-model`, acrescentar Limpar, enviar por
+Enter/botão, mostrar regras e validar o envio. Cada passo indica a alteração,
+a explicação e o resultado que deve ser conferido antes de avançar.
+
+O formulário fica pronto no passo 6; cadastro em lista e remoção entram nos
+passos 7 e 8, conforme o ritmo da turma. Os códigos são versões acumuladas:
+atualize os mesmos blocos do exercício, sem duplicar refs ou funções.
+`src/data/lesson04Reference.js` mantém o material de referência utilizado pela
+sequência guiada, incluindo a solução comentada que fundamenta as etapas finais.
+
+Os componentes `VForm` e `VTextField` estão registrados em `src/plugins/vuetify.js`.
+A prática completa e o desafio de títulos duplicados são material para construir
+na cópia de trabalho do aluno; o conteúdo de `StudentView.vue` foi preservado.
+Não há API ou persistência nessa atividade. É possível acompanhar pela projeção.
+
+Acesso: http://localhost:5173/#aula-4-tela-1.
 
 ## Formatação com Prettier
 
@@ -192,3 +214,27 @@ construa a interface dentro de `v-col` no `<template>` e escreva os estilos no
 bloco `<style scoped>`. Os comentários indicam onde começar. A navegação e o
 registro da tela já estão conectados; não é necessário alterar `App.vue`.
 O código é editado no VS Code, não em um editor dentro do navegador.
+
+## Visualização do formulário por etapas
+
+No Welcome, clique em **Visualizar formulário passo a passo** ou abra
+http://localhost:5173/#formulario. A tela compara os oito passos da aula com
+uma demonstração funcional, código do script/template e estado em tempo real.
+Use **Ver formulário completo** para ir ao passo 8, ou o endereço direto
+http://localhost:5173/#formulario-passo-8.
+
+Cada passo reinicia sua demonstração ao ser aberto. Os dados ficam apenas na
+memória e não alteram a Área livre. A tela está em
+`src/views/FormWorkshopView.vue`; o preview está em
+`src/components/forms/FormStepPreview.vue`.
+
+### Formulário com dois campos
+
+A visualização `#formulario` agora usa **Nome do aluno** e **Idade**. O cadastro
+forma um array `alunos` com objetos `{ id, nome, idade }`. A idade é obrigatória,
+inteira, de 0 a 120, e é convertida para número ao criar o registro. Limpar e o
+sucesso no envio esvaziam ambos os campos. Cada cartão apresenta nome e idade.
+
+Os códigos e instruções desta variante estão em `src/data/studentFormWorkshop.js`.
+A aula teórica de objetivos em `lesson04.js` e os exercícios da Área livre foram
+preservados; a tela de visualização adapta os mesmos conceitos a um cadastro de alunos.

@@ -60,6 +60,9 @@ function pagar() {
               <v-btn href="#area-livre" color="primary" rounded="lg" elevation="0">
                 Abrir área livre →
               </v-btn>
+              <v-btn href="#formulario" color="primary" variant="tonal" rounded="lg">
+                Visualizar formulário passo a passo →
+              </v-btn>
             </div>
           </v-col>
           <v-col cols="12" md="5" class="mt-10 mt-md-0">

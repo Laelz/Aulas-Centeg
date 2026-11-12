@@ -8,16 +8,18 @@ import { useCourseNavigation } from '../composables/useCourseNavigation'
 import WelcomeView from './WelcomeView.vue'
 import EventsLabView from './EventsLabView.vue'
 import StudentView from './StudentView.vue'
+import FormWorkshopView from './FormWorkshopView.vue'
 
 const {
-  lessons, lessonIndex, screenIndex, demo, laboratory, student, heading,
+  lessons, lessonIndex, screenIndex, demo, laboratory, student, formWorkshop, heading,
   lesson, screen, position, go, move,
 } = useCourseNavigation()
 const totalScreens = lessons.reduce((total, item) => total + item.screens.length, 0)
 </script>
 
 <template>
-  <StudentView v-if="student" />
+  <FormWorkshopView v-if="formWorkshop" />
+  <StudentView v-else-if="student" />
   <EventsLabView v-else-if="laboratory" />
   <template v-else-if="demo">
     <div class="demo-return">
