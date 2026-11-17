@@ -41,7 +41,7 @@ function adicionar() {
               <v-text-field v-model="nome" label="Nome"></v-text-field>
               <v-text-field v-model="idade" label="Idade"></v-text-field>
               <v-bottom-sheet class="">
-                <v-btn @click="adicionar()"> Adcionar</v-btn>
+                <v-btn @click="adicionar()"> Adicionar</v-btn>
                 <v-btn> Limpar</v-btn>
               </v-bottom-sheet>
             </v-card>
