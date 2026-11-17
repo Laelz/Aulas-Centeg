@@ -1,3 +1,4 @@
+import { lesson05 } from './lesson05.js'
 import { lesson04 } from './lesson04.js'
 import { lesson03 } from './lesson03.js'
 import { lesson02 } from './lesson02.js'
@@ -211,103 +212,7 @@ export const lessons = [
   lesson02,
   lesson03,
   lesson04,
-  {
-    date: '17/11',
-    weekday: 'Terça-feira',
-    title: 'Componentização',
-    summary: 'Separe responsabilidades e comunique intenções.',
-    files: [
-      'src/components/ObjetivoForm.vue (proposto)',
-      'src/components/ObjetivoCard.vue (proposto)',
-      'componente pai do exercício',
-    ],
-    screens: [
-      screen(
-        'Responsabilidades',
-        'Uma coleção, componentes com papéis claros',
-        'Dividir arquivos só ajuda se cada componente tiver uma responsabilidade. O pai será dono da coleção; formulário e cartão cuidarão de suas interfaces.',
-        [
-          [
-            'Pai',
-            'Mantém objetivos e as funções que adicionam, concluem e removem. É a fonte de verdade da coleção.',
-          ],
-          [
-            'Formulário',
-            'Mantém o campo e a validação. Quando tudo está correto, emite adicionar com o título normalizado.',
-          ],
-          [
-            'Cartão',
-            'Recebe um objetivo e mostra título e estado. Solicita alterações emitindo eventos com o identificador.',
-          ],
-        ],
-        'Painel (coleção)\n├── ObjetivoForm → emite adicionar(titulo)\n└── ObjetivoCard ← recebe objetivo\n                 → emite alternar(id)',
-        'O que poderia dar errado se cada cartão mantivesse uma cópia independente da coleção?',
-      ),
-      screen(
-        'Props e eventos',
-        'Dados descem, intenções sobem',
-        'Props são entradas do componente. Eventos avisam ao pai que uma ação ocorreu. O filho não deve alterar diretamente o objeto recebido.',
-        [
-          [
-            'defineProps',
-            'Declare o contrato do cartão. Usar props.objetivo torna explícita a origem do dado.',
-          ],
-          [
-            'defineEmits',
-            'Declare alternar e envie o id. O pai escolhe como encontrar e atualizar o item.',
-          ],
-          [
-            'script setup',
-            'As macros defineProps e defineEmits são disponibilizadas pelo compilador. Não use this nem migre para Options API.',
-          ],
-        ],
-        'const props = defineProps({\n  objetivo: { type: Object, required: true },\n})\nconst emit = defineEmits(["alternar"])\n\n// No template do cartão:\n<v-btn @click="emit(\'alternar\', props.objetivo.id)">\n  {{ props.objetivo.concluido ? "Reabrir" : "Concluir" }}\n</v-btn>',
-        'Por que emitir alternar é diferente de escrever diretamente em props.objetivo.concluido?',
-      ),
-      screen(
-        'Prática guiada',
-        'Extraia preservando o comportamento',
-        'Refatore em pequenos passos: mova uma parte, execute e confira antes de mover a próxima.',
-        [
-          [
-            '1 · Formulário',
-            'Crie ObjetivoForm.vue. Mova o campo, as regras e o envio. Emita adicionar somente após validação.',
-          ],
-          [
-            '2 · Cartão',
-            'Crie ObjetivoCard.vue. Receba objetivo e emita alternar. Importe os dois componentes no pai.',
-          ],
-          [
-            '3 · Atualização',
-            'No pai, encontre o objetivo por id e inverta concluido. Teste com dois itens para confirmar independência.',
-          ],
-        ],
-        'function alternar(id) {\n  const item = objetivos.value.find(item => item.id === id)\n  if (item) item.concluido = !item.concluido\n}\n\n<ObjetivoCard v-for="item in objetivos" :key="item.id"\n  :objetivo="item" @alternar="alternar" />',
-        'Qual evento carrega o título e qual carrega o identificador? Justifique.',
-      ),
-      screen(
-        'Desafio',
-        'Acrescente remoção sem quebrar o contrato',
-        'Use o mesmo fluxo para remover um objetivo. O cartão solicita, o pai altera a coleção.',
-        [
-          [
-            'Faça sozinho',
-            'Declare o evento remover, inclua um botão com nome claro e emita o id. No pai, implemente a exclusão.',
-          ],
-          [
-            'Critérios',
-            'Concluir, reabrir e remover atingem somente o item escolhido. Cadastro e validação continuam funcionando.',
-          ],
-          [
-            'Diagnóstico',
-            'Evento não chega: confira grafia e listener. Item errado muda: confira id. Mudança desaparece: procure uma segunda fonte de verdade.',
-          ],
-        ],
-        '// No pai, proposta de exclusão:\nfunction remover(id) {\n  objetivos.value = objetivos.value.filter(item => item.id !== id)\n}',
-        'Explique o trajeto completo de um clique em Remover até o desaparecimento do cartão.',
-      ),
-    ],
-  },
+  lesson05,
   {
     date: '19/11',
     weekday: 'Quinta-feira',

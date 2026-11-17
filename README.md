@@ -106,7 +106,8 @@ src/
 │   ├── lessons.js
 │   ├── lesson02.js
 │   ├── lesson03.js
-│   └── lesson04.js
+│   ├── lesson04.js
+│   └── lesson05.js
 ├── plugins/
 │   └── vuetify.js
 ├── styles/
@@ -145,8 +146,8 @@ pela projeção e resolvidas no caderno. Código mostrado no curso é texto did�
 não executado automaticamente. Use os trechos principais na explicação e os
 complementares como apoio conforme o ritmo da turma.
 
-Acesso: http://localhost:5173/#aula-3-tela-1. O curso possui 44 telas:
-oito em 05/11, 10/11 e 12/11, e quatro em cada um dos outros cinco encontros.
+Acesso: http://localhost:5173/#aula-3-tela-1. O curso possui 48 telas:
+oito em 05/11, 10/11, 12/11 e 17/11, e quatro nos outros quatro encontros.
 
 ## Aula de 12/11 — formulários e listas
 
@@ -238,3 +239,17 @@ sucesso no envio esvaziam ambos os campos. Cada cartão apresenta nome e idade.
 Os códigos e instruções desta variante estão em `src/data/studentFormWorkshop.js`.
 A aula teórica de objetivos em `lesson04.js` e os exercícios da Área livre foram
 preservados; a tela de visualização adapta os mesmos conceitos a um cadastro de alunos.
+
+## Aula de 17/11 — componentização do cadastro de alunos
+
+`src/data/lesson05.js` detalha oito etapas de 15 minutos, com 24 blocos comentados:
+mapear responsabilidades, criar o primeiro cartão, receber props, emitir eventos,
+extrair o formulário, integrar o painel, reutilizar componentes e revisar com desafios.
+
+A base é o cadastro real de nome e idade feito em `StudentView.vue`. Os arquivos
+`components/alunos/AlunoForm.vue`, `AlunoCard.vue` e `AlunosPanel.vue` são propostas
+para a turma construir em sua cópia; não foram criados automaticamente e a Área
+livre não foi alterada. O material inclui implementações completas de referência,
+roteiro de professor, checkpoints, erros comuns e verificação da aprendizagem.
+
+Acesse http://localhost:5173/#aula-5-tela-1 com o projeto rodando.

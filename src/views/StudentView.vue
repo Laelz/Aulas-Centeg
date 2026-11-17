@@ -1,11 +1,23 @@
 <script setup>
-// ÁREA LIVRE DO ALUNO
-// 1. Importe aqui o que precisar do Vue ou de outros componentes.
-// Exemplo: import { ref } from 'vue'
+// import { ref } from 'vue'
+import { ref } from 'vue'
 
-// 2. Declare aqui os dados da sua interface.
+const nome = ref('');
+const idade = ref();
 
-// 3. Escreva aqui as funções chamadas pelos eventos do template.
+const alunos = ref([]);
+
+function adicionar() {
+  alunos.value.push(
+    {
+      nome: nome.value,
+      idade: idade.value,
+    }
+  )
+
+  nome.value = ''
+  idade.value = null
+}
 </script>
 
 <template>
@@ -25,13 +37,22 @@
       <v-container class="py-8">
         <v-row>
           <v-col cols="12">
-            <!-- SEU CONTEÚDO COMEÇA AQUI.
-              Adicione textos, botões, campos, cartões ou outros componentes.
-              Use os dados e as funções declarados no script setup.
-              Para criar mais colunas, adicione v-col dentro desta v-row.
-              Componentes Vuetify novos precisam de registro em plugins/vuetify.js.
-            -->
+            <v-card class="pa-6" title="Formulário de Alunos">
+              <v-text-field v-model="nome" label="Nome"></v-text-field>
+              <v-text-field v-model="idade" label="Idade"></v-text-field>
+              <v-bottom-sheet class="">
+                <v-btn @click="adicionar()"> Adcionar</v-btn>
+                <v-btn> Limpar</v-btn>
+              </v-bottom-sheet>
+            </v-card>
           </v-col>
+          <div v-if="alunos.length">
+            <v-col v-for="aluno in alunos" cols="12">
+              <v-card class="pa-6">
+                <div>{{ aluno }}</div>
+              </v-card>
+            </v-col>
+          </div>
         </v-row>
       </v-container>
     </v-main>
