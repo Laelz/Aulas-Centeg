@@ -46,13 +46,12 @@ function adicionar() {
               </v-bottom-sheet>
             </v-card>
           </v-col>
-          <div v-if="alunos.length">
-            <v-col v-for="aluno in alunos" cols="12">
-              <v-card class="pa-6">
-                <div>{{ aluno }}</div>
-              </v-card>
-            </v-col>
-          </div>
+          <v-col v-for="aluno in alunos" cols="4">
+            <v-card class="pa-6">
+              <v-card-title>Nome: {{ aluno.nome }}</v-card-title>
+              <v-card-text>Idade: {{ aluno.idade }} anos </v-card-text>
+            </v-card>
+          </v-col>
         </v-row>
       </v-container>
     </v-main>
