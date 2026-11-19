@@ -25,7 +25,7 @@ const totalScreens = lessons.reduce((total, item) => total + item.screens.length
     <div class="demo-return">
       <v-btn color="primary" @click="go(lessonIndex, screenIndex)">← Voltar às aulas</v-btn>
     </div>
-    <WelcomeView />
+    <WelcomeView :aluno="dados" />
   </template>
   <v-app v-else>
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -39,7 +39,11 @@ const totalScreens = lessons.reduce((total, item) => total + item.screens.length
               >ENCONTRO {{ String(lessonIndex + 1).padStart(2, '0') }} /
               {{ String(lessons.length).padStart(2, '0') }}</span
             >
-            <span>{{ lesson.weekday }} · {{ lesson.date }}/2026 · 120 min</span>
+            <span
+              >{{ lesson.weekday }} ·
+
+              {{ lesson.date }}/2026 · 120 min</span
+            >
           </div>
           <h1 class="lesson-title">{{ lesson.title }}</h1>
           <p class="lesson-summary">{{ lesson.summary }}</p>

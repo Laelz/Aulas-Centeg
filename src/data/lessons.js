@@ -1,3 +1,4 @@
+import { lesson06 } from './lesson06.js'
 import { lesson05 } from './lesson05.js'
 import { lesson04 } from './lesson04.js'
 import { lesson03 } from './lesson03.js'
@@ -213,99 +214,7 @@ export const lessons = [
   lesson03,
   lesson04,
   lesson05,
-  {
-    date: '19/11',
-    weekday: 'Quinta-feira',
-    title: 'Dados e regras da interface',
-    summary: 'Derive filtros e totais sem duplicar estado.',
-    files: ['componente pai do exercício', 'src/components/ObjetivoCard.vue (proposto)'],
-    screens: [
-      screen(
-        'Computed',
-        'Guarde os dados, calcule as respostas',
-        'A lista é estado de origem. Total, quantidade concluída e lista filtrada podem ser calculados a partir dela.',
-        [
-          [
-            'Estado de origem',
-            'objetivos guarda os itens. filtro guarda a escolha do usuário. Esses valores precisam ser alterados por ações.',
-          ],
-          [
-            'Dados derivados',
-            'computed expressa uma relação. Se a coleção mudar, as respostas dependentes serão atualizadas.',
-          ],
-          [
-            'Sem efeitos',
-            'O cálculo não deve cadastrar, remover nem salvar itens. Ele recebe estado e devolve um resultado.',
-          ],
-        ],
-        'import { computed } from "vue"\n\nconst total = computed(() => objetivos.value.length)\nconst concluidos = computed(() =>\n  objetivos.value.filter(item => item.concluido).length\n)',
-        'Que problema aparece se total for um ref atualizado manualmente em várias funções?',
-      ),
-      screen(
-        'Filtros',
-        'Mude a visão, preserve a coleção',
-        '“Ver pendentes” não significa apagar concluídos. A lista visível é uma projeção dos dados originais.',
-        [
-          [
-            'Três escolhas',
-            'Use todos, pendentes e concluidos como valores de filtro. Botões existentes do Vuetify são suficientes.',
-          ],
-          [
-            'Filtro de array',
-            'Use filter dentro de computed. Não se trata da antiga sintaxe de filtros do Vue 2.',
-          ],
-          [
-            'Dois vazios',
-            'Nenhum cadastro pede uma primeira ação. Nenhum resultado no filtro pede mudar o filtro ou concluir outro item.',
-          ],
-        ],
-        'const filtro = ref("todos")\nconst visiveis = computed(() => objetivos.value.filter(item => {\n  if (filtro.value === "pendentes") return !item.concluido\n  if (filtro.value === "concluidos") return item.concluido\n  return true\n}))',
-        'Se um item for concluído enquanto o filtro Pendentes está ativo, o que deve acontecer?',
-      ),
-      screen(
-        'Prática guiada',
-        'Filtros e indicadores coerentes',
-        'Use a mesma coleção para todos os cálculos. Não crie cópias para cada filtro.',
-        [
-          [
-            '1 · Controles',
-            'Crie três botões que alteram filtro. Indique visualmente a seleção e informe seu estado com aria-pressed.',
-          ],
-          [
-            '2 · Derivações',
-            'Crie visiveis, total e concluidos. Renderize somente visiveis, mantendo as ações pelo id.',
-          ],
-          [
-            '3 · Verificação',
-            'Cadastre três itens, conclua um e percorra os filtros. Confira o total geral, não apenas a quantidade visível.',
-          ],
-        ],
-        '<v-btn :aria-pressed="filtro === \'pendentes\'"\n  @click="filtro = \'pendentes\'">Pendentes</v-btn>\n\n<p>{{ concluidos }} de {{ total }} concluídos</p>',
-        'O total geral deve mudar ao trocar o filtro? Por quê?',
-      ),
-      screen(
-        'Watch e extensão',
-        'Observar mudanças só quando há um efeito',
-        'O projeto original não possui persistência. O painel obrigatório pode continuar em memória. Salvar no navegador é uma extensão opcional, não uma API nem um banco compartilhado.',
-        [
-          [
-            'Computed ou watch?',
-            'computed calcula valores da interface. watch executa um efeito em resposta a uma mudança, como gravar no armazenamento.',
-          ],
-          [
-            'Persistência opcional',
-            'Leia localStorage com try/catch, valide o formato e use uma chave versionada. Só depois configure observação profunda da coleção.',
-          ],
-          [
-            'Desafio obrigatório',
-            'Mostre “X de Y concluídos” e uma mensagem própria para lista vazia. Explique o que se perde ao recarregar sem persistência.',
-          ],
-        ],
-        '// Extensão: depois de restaurar e validar a coleção.\nwatch(objetivos, itens => {\n  try {\n    localStorage.setItem("objetivos:v1", JSON.stringify(itens))\n  } catch {\n    // Informe que não foi possível salvar.\n  }\n}, { deep: true })',
-        'Por que um watcher não é necessário para recalcular o total de pendências?',
-      ),
-    ],
-  },
+  lesson06,
   {
     date: '24/11',
     weekday: 'Terça-feira',

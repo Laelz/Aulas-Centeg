@@ -1,15 +1,18 @@
 <script setup>
 // import { ref } from 'vue'
 import { ref } from 'vue'
+import AlunoCard from '../components/aluno/AlunoCard.vue';
 
 const nome = ref('');
 const idade = ref();
+const id = ref(1);
 
 const alunos = ref([]);
 
 function adicionar() {
   alunos.value.push(
     {
+      id: id.value++,
       nome: nome.value,
       idade: idade.value,
     }
@@ -17,6 +20,15 @@ function adicionar() {
 
   nome.value = ''
   idade.value = null
+}
+
+function deletarItem(id) {
+
+  const alunoRemovido = alunos.value.findIndex(item => item.id === id);
+
+  alunos.value.splice(alunoRemovido, 1);
+
+  alert("Aluno removido com sucesso");
 }
 </script>
 
@@ -40,17 +52,14 @@ function adicionar() {
             <v-card class="pa-6" title="Formulário de Alunos">
               <v-text-field v-model="nome" label="Nome"></v-text-field>
               <v-text-field v-model="idade" label="Idade"></v-text-field>
-              <v-bottom-sheet class="">
+              <v-card-actions class="">
                 <v-btn @click="adicionar()"> Adicionar</v-btn>
                 <v-btn> Limpar</v-btn>
-              </v-bottom-sheet>
+              </v-card-actions>
             </v-card>
           </v-col>
           <v-col v-for="aluno in alunos" cols="4">
-            <v-card class="pa-6">
-              <v-card-title>Nome: {{ aluno.nome }}</v-card-title>
-              <v-card-text>Idade: {{ aluno.idade }} anos </v-card-text>
-            </v-card>
+            <AlunoCard :aluno="aluno" @remover="deletarItem($event)" />
           </v-col>
         </v-row>
       </v-container>

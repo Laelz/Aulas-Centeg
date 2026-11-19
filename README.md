@@ -107,7 +107,8 @@ src/
 │   ├── lesson02.js
 │   ├── lesson03.js
 │   ├── lesson04.js
-│   └── lesson05.js
+│   ├── lesson05.js
+│   └── lesson06.js
 ├── plugins/
 │   └── vuetify.js
 ├── styles/
@@ -146,8 +147,8 @@ pela projeção e resolvidas no caderno. Código mostrado no curso é texto did�
 não executado automaticamente. Use os trechos principais na explicação e os
 complementares como apoio conforme o ritmo da turma.
 
-Acesso: http://localhost:5173/#aula-3-tela-1. O curso possui 48 telas:
-oito em 05/11, 10/11, 12/11 e 17/11, e quatro nos outros quatro encontros.
+Acesso: http://localhost:5173/#aula-3-tela-1. O curso possui 52 telas:
+oito em 05/11, 10/11, 12/11, 17/11 e 19/11, e quatro nos outros três encontros.
 
 ## Aula de 12/11 — formulários e listas
 
@@ -253,3 +254,19 @@ livre não foi alterada. O material inclui implementações completas de referê
 roteiro de professor, checkpoints, erros comuns e verificação da aprendizagem.
 
 Acesse http://localhost:5173/#aula-5-tela-1 com o projeto rodando.
+
+## Aula de 19/11 — dados e regras da interface
+
+`src/data/lesson06.js` contém oito etapas de 15 minutos e 24 blocos comentados:
+fonte de verdade, totais com `computed`, busca por nome, faixa de idade, ordenação,
+estados vazios, integração e comparação entre `computed` e `watch`.
+
+A base é o cadastro real de `StudentView.vue` e seu componente
+`src/components/aluno/AlunoCard.vue`. Os exemplos preservam o id incremental e o
+evento `remover`. As mudanças, inclusive a proteção para `findIndex === -1`, são
+propostas para a cópia do aluno; os arquivos do exercício não foram alterados.
+
+O cadastro continua em memória. A extensão opcional salva somente a preferência
+de busca, com tratamento de falha no `localStorage`; não persiste a coleção.
+Há checkpoints, matriz de testes, desafio e critérios de avaliação individual.
+Acesso: http://localhost:5173/#aula-6-tela-1 com o projeto rodando.
